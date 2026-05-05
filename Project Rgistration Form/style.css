@@ -1,28 +1,42 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(247, 178, 103, 0.18), transparent 28%),
+        linear-gradient(135deg, #fcfaf3, #edf2f7);
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 20px;
+    position: relative;
 }
 
 .form-container {
     background: white;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 18px;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.12);
     max-width: 500px;
     width: 100%;
 }
 
-h2 { color: #2c3e50; margin-bottom: 5px; }
-p { color: #7f8c8d; font-size: 0.9em; margin-bottom: 20px; }
+h2 {
+    color: #17324d;
+    margin-bottom: 5px;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+p {
+    color: #617486;
+    font-size: 0.95em;
+    margin-bottom: 20px;
+}
 
 fieldset {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #dde5eb;
+    border-radius: 12px;
     margin-bottom: 20px;
-    padding: 15px;
+    padding: 16px;
 }
 
 legend { font-weight: bold; padding: 0 10px; color: #34495e; }
@@ -36,29 +50,74 @@ label {
 
 input, select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    padding: 11px 12px;
+    border: 1px solid #c7d2da;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #d38b33;
+    box-shadow: 0 0 0 4px rgba(247, 178, 103, 0.18);
 }
 
 .form-footer {
     display: flex;
     gap: 10px;
+    margin-top: 10px;
 }
 
 button {
     flex: 1;
     padding: 12px;
-    background-color: #27ae60;
+    background-color: #d38b33;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
+    transition: transform 0.25s ease, background-color 0.25s ease;
 }
 
-button:hover { background-color: #219150; }
+button:hover {
+    background-color: #ba7522;
+    transform: translateY(-2px);
+}
 
 .btn-secondary { background-color: #95a5a6; }
 .btn-secondary:hover { background-color: #7f8c8d; }
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    color: #17324d;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.back-btn:hover {
+    background: white;
+    transform: translateX(-3px);
+}
+
+@media (max-width: 600px) {
+    body {
+        align-items: flex-start;
+        padding-top: 78px;
+    }
+
+    .form-container {
+        padding: 24px 18px;
+    }
+
+    .form-footer {
+        flex-direction: column;
+    }
+}

@@ -6,109 +6,140 @@
   <title>Customer Feedback Form</title>
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
+      padding: 24px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 20px;
+      justify-content: center;
+      background:
+        radial-gradient(circle at top right, rgba(116, 197, 248, 0.24), transparent 25%),
+        linear-gradient(135deg, #17324d, #214f70);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    }
+
+    .page-shell {
+      width: min(520px, 100%);
+      position: relative;
     }
 
     .back-btn {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: #f6f8fb;
       text-decoration: none;
-      border-radius: 5px;
-      font-size: 14px;
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.14);
+      transition: background 0.25s ease, transform 0.25s ease;
     }
 
     .back-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.22);
       transform: translateX(-3px);
     }
 
-    /* Customer Feedback Form styling */
     .feedback-form {
-      background: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 450px;
+      background: #fdfcf7;
+      padding: 34px 30px;
+      border-radius: 24px;
+      box-shadow: 0 24px 48px rgba(7, 23, 39, 0.22);
     }
 
-    .feedback-form h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #333;
-      font-size: 24px;
+    .feedback-form h1 {
+      margin-bottom: 10px;
+      color: #14324c;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+    }
+
+    .feedback-form p {
+      margin-bottom: 24px;
+      color: #567089;
+      line-height: 1.6;
+    }
+
+    .feedback-form label {
+      display: block;
+      margin-bottom: 8px;
+      color: #18344d;
+      font-weight: 700;
     }
 
     .feedback-form input,
     .feedback-form textarea {
       width: 100%;
-      margin-bottom: 15px;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 14px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: border-color 0.3s ease;
+      margin-bottom: 18px;
+      padding: 13px 14px;
+      border: 1px solid #cbd7e2;
+      border-radius: 12px;
+      font: inherit;
+      background: white;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
     .feedback-form input:focus,
     .feedback-form textarea:focus {
       outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      border-color: #3d7da6;
+      box-shadow: 0 0 0 4px rgba(61, 125, 166, 0.14);
     }
 
     .feedback-form button {
       width: 100%;
-      padding: 12px;
-      background: #667eea;
-      color: #fff;
+      padding: 14px;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: 600;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #2f7caf, #1e5e89);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .feedback-form button:hover {
-      background: #5568d3;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      box-shadow: 0 14px 24px rgba(30, 94, 137, 0.24);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 16px;
+      }
+
+      .feedback-form {
+        padding: 26px 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="index.html" class="back-btn">← Back to Home</a>
+  <div class="page-shell">
+    <a href="index.html" class="back-btn">&lt; Back to Home</a>
 
-  <!-- Customer Feedback Form -->
-  <div class="feedback-form">
-    <h2>Customer Feedback</h2>
-    <form>
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="feedback" rows="5" placeholder="Your Feedback" required></textarea>
-      <button type="submit">Submit Feedback</button>
-    </form>
+    <div class="feedback-form">
+      <h1>Customer Feedback</h1>
+      <p>Tell us what worked well and where we can improve. Every message helps us build a better experience.</p>
+
+      <form>
+        <label for="feedback-name">Full Name</label>
+        <input type="text" id="feedback-name" name="name" placeholder="Enter your name" required>
+
+        <label for="feedback-email">Email Address</label>
+        <input type="email" id="feedback-email" name="email" placeholder="Enter your email" required>
+
+        <label for="feedback-message">Your Feedback</label>
+        <textarea id="feedback-message" name="feedback" rows="5" placeholder="Share your experience" required></textarea>
+
+        <button type="submit">Submit Feedback</button>
+      </form>
+    </div>
   </div>
-
 </body>
 </html>
