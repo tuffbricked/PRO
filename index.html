@@ -3,121 +3,331 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PRO - Home</title>
+  <title>PRO Form Hub</title>
   <style>
+    :root {
+      --bg-deep: #0f2238;
+      --bg-mid: #1d4466;
+      --panel: rgba(7, 19, 31, 0.76);
+      --panel-soft: rgba(255, 255, 255, 0.08);
+      --line: rgba(255, 255, 255, 0.12);
+      --text-main: #f7f4ea;
+      --text-soft: #d2dce6;
+      --mint: #7bd389;
+      --gold: #f7b267;
+      --sky: #74c5f8;
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
+      padding: 24px;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at top left, rgba(123, 211, 137, 0.18), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(247, 178, 103, 0.18), transparent 26%),
+        linear-gradient(135deg, var(--bg-deep), var(--bg-mid));
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    }
+
+    .site-shell {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 18px;
+      border-radius: 30px;
+      background: rgba(8, 18, 29, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .top-nav a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: var(--text-main);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid transparent;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .top-nav a:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .top-nav .login-link {
+      color: #092034;
+      background: var(--mint);
+      font-weight: 700;
+    }
+
+    .top-nav .login-link:hover {
+      background: #96e1a1;
+      border-color: transparent;
     }
 
     .hero {
-      text-align: center;
-      color: #fff;
-      padding: 40px 20px;
-      max-width: 800px;
-      width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      margin-top: 24px;
+      padding: 34px 18px 18px;
     }
 
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 15px;
+    .hero-copy {
+      padding: 22px 10px 22px 8px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(247, 178, 103, 0.14);
+      color: var(--gold);
+      font-size: 0.82rem;
       font-weight: 700;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .hero p {
-      font-size: 16px;
-      margin-bottom: 35px;
-      opacity: 0.95;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    h1 {
+      margin-bottom: 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.98;
     }
 
-    .nav-buttons {
+    .hero-copy p {
+      max-width: 620px;
+      color: var(--text-soft);
+      font-size: 1.04rem;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
       display: flex;
-      gap: 30px;
-      justify-content: center;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
-    .nav-btn {
-      display: inline-block;
-      padding: 15px 40px;
-      font-size: 18px;
-      font-weight: 600;
+    .hero-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 170px;
+      padding: 14px 18px;
+      border-radius: 999px;
       text-decoration: none;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
+      font-weight: 700;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     }
 
-    .nav-btn.primary {
-      background: #4CAF50;
-      color: white;
+    .hero-actions .primary-action {
+      color: #092034;
+      background: var(--mint);
+      box-shadow: 0 14px 26px rgba(123, 211, 137, 0.2);
     }
 
-    .nav-btn.primary:hover {
-      background: #45a049;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    .hero-actions .primary-action:hover {
+      transform: translateY(-2px);
+      background: #96e1a1;
     }
 
-    .nav-btn.secondary {
-      background: #2196F3;
-      color: white;
+    .hero-actions .ghost-action {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line);
     }
 
-    .nav-btn.secondary:hover {
-      background: #0b7dda;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    .hero-actions .ghost-action:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.14);
     }
 
-    .nav-btn:active {
-      transform: translateY(-1px);
+    .hero-panel {
+      padding: 26px;
+      border-radius: 26px;
+      background: var(--panel);
+      border: 1px solid var(--line);
     }
 
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 36px;
+    .hero-panel h2 {
+      margin-bottom: 18px;
+      font-size: 1.35rem;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--panel-soft);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-item strong {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .hero-item p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .hero-item.login strong {
+      color: var(--mint);
+    }
+
+    .hero-item.feedback strong {
+      color: var(--sky);
+    }
+
+    .hero-item.registration strong {
+      color: var(--gold);
+    }
+
+    @media (max-width: 960px) {
+      .topbar,
+      .hero {
+        grid-template-columns: 1fr;
       }
 
-      .hero p {
-        font-size: 16px;
+      .topbar {
+        display: grid;
       }
 
-      .nav-buttons {
-        flex-direction: column;
-        gap: 15px;
+      .top-nav {
+        justify-content: flex-start;
       }
 
-      .nav-btn {
+      .hero {
+        padding-top: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 14px;
+      }
+
+      .site-shell {
+        padding: 14px;
+        border-radius: 24px;
+      }
+
+      .topbar {
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero {
+        padding: 22px 10px 10px;
+      }
+
+      .hero-panel {
+        padding: 20px;
+      }
+
+      .hero-actions a,
+      .top-nav a {
         width: 100%;
-        padding: 12px 30px;
-        font-size: 16px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>Welcome to PRO</h1>
-    <p>Manage your account and share your feedback with us</p>
-    
-    <div class="nav-buttons">
-      <a href="USERLOGINFORM.html" class="nav-btn primary">User Login</a>
-      <a href="CUSTOMERFEEDBACK.html" class="nav-btn secondary">Customer Feedback</a>
-    </div>
-  </div>
+  <main class="site-shell">
+    <header class="topbar">
+      <div class="brand">PRO <span>Forms</span></div>
+
+      <nav class="top-nav">
+        <a href="USERLOGINFORM.html" class="login-link">User Login</a>
+        <a href="CUSTOMERFEEDBACK.html">Customer Feedback</a>
+        <a href="Project%20Rgistration%20Form/index.html">Product Registration</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Modern Home Page</span>
+        <h1>Your form links now sit right at the top.</h1>
+        <p>This layout uses a website-style header navigation, so users can reach login, feedback, and product registration from the top of the home page the way most modern sites do it.</p>
+
+        <div class="hero-actions">
+          <a href="USERLOGINFORM.html" class="primary-action">Go to Login</a>
+          <a href="CUSTOMERFEEDBACK.html" class="ghost-action">Send Feedback</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <h2>Available Forms</h2>
+
+        <div class="hero-list">
+          <div class="hero-item login">
+            <strong>User Login</strong>
+            <p>Account access for returning users.</p>
+          </div>
+
+          <div class="hero-item feedback">
+            <strong>Customer Feedback</strong>
+            <p>A quick form for comments, suggestions, and service feedback.</p>
+          </div>
+
+          <div class="hero-item registration">
+            <strong>Product Registration</strong>
+            <p>Register products with purchase and supplier details.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
 </body>
 </html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login Form</title>
+  <style>
+    :root {
+      --bg-deep: #102542;
+      --bg-soft: #1d3d5c;
+      --accent: #7bd389;
+      --accent-dark: #59b56c;
+      --card: #fdfcf7;
+      --text-main: #14324c;
+      --text-soft: #62788c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at left top, rgba(123, 211, 137, 0.26), transparent 28%),
+        linear-gradient(135deg, var(--bg-deep), var(--bg-soft));
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    }
+
+    .page-shell {
+      width: min(940px, 100%);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: #f6f8fb;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.14);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      transform: translateX(-3px);
+    }
+
+    .login-panel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: 0 26px 58px rgba(7, 23, 39, 0.3);
+      background: var(--card);
+    }
+
+    .login-copy {
+      padding: 42px 38px;
+      color: white;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.18)),
+        linear-gradient(135deg, #18486c, #0e253e);
+    }
+
+    .login-copy span {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(123, 211, 137, 0.16);
+      color: #baf0c4;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .login-copy h1 {
+      margin-bottom: 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.08;
+    }
+
+    .login-copy p {
+      max-width: 420px;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.7;
+    }
+
+    .login-copy ul {
+      margin-top: 24px;
+      padding-left: 18px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.8;
+    }
+
+    .login-form {
+      padding: 42px 34px;
+      color: var(--text-main);
+    }
+
+    .login-form h2 {
+      margin-bottom: 10px;
+      font-size: 1.7rem;
+    }
+
+    .login-form p {
+      margin-bottom: 24px;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .login-form input {
+      width: 100%;
+      margin-bottom: 18px;
+      padding: 13px 14px;
+      border: 1px solid #c8d5df;
+      border-radius: 12px;
+      font: inherit;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .login-form input:focus {
+      outline: none;
+      border-color: var(--accent-dark);
+      box-shadow: 0 0 0 4px rgba(123, 211, 137, 0.18);
+    }
+
+    .login-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 4px 0 22px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .remember-me {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .remember-me input {
+      width: auto;
+      margin: 0;
+    }
+
+    .login-options a {
+      color: #25658f;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .login-options a:hover {
+      text-decoration: underline;
+    }
+
+    .login-form button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #0e253e;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .login-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(89, 181, 108, 0.25);
+    }
+
+    @media (max-width: 860px) {
+      .login-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 16px;
+      }
+
+      .login-copy,
+      .login-form {
+        padding: 28px 22px;
+      }
+
+      .login-options {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <a href="index.html" class="back-btn">&lt; Back to Home</a>
+
+    <div class="login-panel">
+      <section class="login-copy">
+        <span>Account Access</span>
+        <h1>Welcome back to PRO.</h1>
+        <p>Log in to manage your account, continue your workflow, and stay connected to your forms from one place.</p>
+        <ul>
+          <li>Secure email and password sign-in</li>
+          <li>Optional remembered session</li>
+          <li>Fast return to your dashboard</li>
+        </ul>
+      </section>
+
+      <section class="login-form">
+        <h2>User Login</h2>
+        <p>Enter your account details below to continue.</p>
+
+        <form>
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" name="email" placeholder="name@example.com" required>
+
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+
+          <div class="login-options">
+            <label class="remember-me" for="remember-me">
+              <input type="checkbox" id="remember-me" name="remember_me">
+              <span>Remember me</span>
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit">Sign In</button>
+        </form>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
